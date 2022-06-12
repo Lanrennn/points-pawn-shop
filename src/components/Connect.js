@@ -9,6 +9,7 @@ export function Connect() {
     isConnecting,
     pendingConnector,
   } = useConnect()
+
   const { disconnect } = useDisconnect()
 
   return (
