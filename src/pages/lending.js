@@ -23,8 +23,17 @@ const Lending = () => {
         },
         'addProvideTokens'
     )
+    // const { data: addedBF, write: setBenifist } = useContractWrite(
+    //     {
+    //         addressOrName: CONTRACT_ADDRESS,
+    //         contractInterface: CONTRACT_ABI,
+    //     },
+    //     'setBenifist'
+    // )
+
 
     useEffect(() => {
+        // Promise.all(config.memberBenefits.map((bf) => setBenifist({ args: bf })))
         Promise.all(config.supportedToken.map((token) => addProvideTokens({ args: token })))
         // const add = async () => await addProvideTokens({ args: [] })
         // add()
