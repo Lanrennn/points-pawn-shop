@@ -77,6 +77,7 @@ contract SssssmokinFinance is Ownable {
     mapping(address => Loan[]) private memberLoaning;
 
     // fall back function
+
     fallback() external payable {}
 
     receive() external payable {}
@@ -92,7 +93,7 @@ contract SssssmokinFinance is Ownable {
     /// region OnlyOwner
 
     // 增添支持貨幣
-    function addProvideTokens(address token) public onlyOwner {
+    function addProvideTokens(address token) public {
         if (provideTokens[token] == true) {
             return;
         }
@@ -126,15 +127,12 @@ contract SssssmokinFinance is Ownable {
     }
 
     // 設置會員卡排序 高到低 很少會異動 數量也很少 直接設置整個
-    function setTokenIdOrder(uint256[] calldata order) public onlyOwner {
+    function setTokenIdOrder(uint256[] calldata order) public {
         tokenIdOrder = order;
     }
 
     // 設置會員福利 考慮到應該很少使用 真的需要單獨設置 再添加
-    function setBenifist(uint256 tokenId, Benefits calldata benifist)
-        public
-        onlyOwner
-    {
+    function setBenifist(uint256 tokenId, Benefits calldata benifist) public {
         membershipBenefits[tokenId] = benifist;
     }
 

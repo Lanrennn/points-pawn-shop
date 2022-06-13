@@ -14,7 +14,7 @@ const Landing = () => {
         pendingConnector,
     } = useConnect()
     const { disconnect } = useDisconnect()
-    console.log(connectors, activeConnector)
+
     return (
         <section className='banner_main'>
             <Container>
