@@ -25,9 +25,9 @@ contract SssssmokinFinance is Ownable {
         uint256 exchange
     );
 
-    event DepositForEthSuccess(uint256 amount, uint256 exchange);
+    event DepositForEthSuccess(uint256 indexed amount, uint256 indexed exchange);
 
-    event RepaymentSucess(uint256 pos, uint256 remain);
+    event RepaymentSucess(uint256 pos, uint256 indexed remain);
 
     // 福利
     struct Benefits {
@@ -93,7 +93,7 @@ contract SssssmokinFinance is Ownable {
     /// region OnlyOwner
 
     // 增添支持貨幣
-    function addProvideTokens(address token) public {
+    function addProvideTokens(address token) public onlyOwner {
         if (provideTokens[token] == true) {
             return;
         }
@@ -149,7 +149,7 @@ contract SssssmokinFinance is Ownable {
     }
 
     // 取得全部會員NFT福利
-    function getBenifits() public view returns (Benefits[] memory) {
+    function getAllBenifits() public view returns (Benefits[] memory) {
         Benefits[] memory benefits = new Benefits[](tokenIdOrder.length);
         for (uint256 i = 0; i < tokenIdOrder.length; i++) {
             benefits[i] = membershipBenefits[tokenIdOrder[i]];
